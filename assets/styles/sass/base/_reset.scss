@@ -1,0 +1,9 @@
+/* Here are Other stylesheets */
+* {
+    box-sizing: border-box;   
+}
+
+/* HTML 5 - legacy block converters*/
+header, section, footer, aside, nav, article, figure {
+    display: block; 
+}
