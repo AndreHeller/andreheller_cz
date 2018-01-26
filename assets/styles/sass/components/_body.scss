@@ -1,0 +1,12 @@
+body {
+	font-family: 'Ubuntu';
+}
+
+a {
+	@include transition(color 0.2s 0s ease-in);
+
+}
+
+a:hover{
+	@include transition(color 0.2s 0s ease-out);
+}

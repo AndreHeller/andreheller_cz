@@ -1,0 +1,20 @@
+@font-face {
+    font-family: JosefinSansThin;
+    src: url(#{$URLHostname}/css/fonts/JosefinSans-Thin.woff) format("woff");
+    font-weight: lighter;
+}
+@font-face {
+    font-family: JosefinSans;
+    src: url(#{$URLHostname}/css/fonts/JosefinSans-Regular.woff) format("woff");
+    font-weight: normal;
+}
+@font-face {
+    font-family: JosefinSansBold;
+    src: url(#{$URLHostname}/css/fonts/JosefinSans-Bold.woff) format("woff");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: url(#{$URLHostname}/css/fonts/Ubuntu-Regular.woff) format("woff");
+}
