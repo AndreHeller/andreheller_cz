@@ -1,0 +1,349 @@
+@media only screen {
+	.signpost {
+		display: block;
+		width: 100%;
+		height: 100vh;
+		margin: 0;
+		padding: 0;
+		background-color: #000;
+		background-image: url(#{$URLHostname}/img/signpost_bg.jpg);
+		background-repeat: no-repeat;
+		background-position: center bottom;
+		background-attachment: fixed;
+		background-size: cover;
+
+		> .signpost-content {
+			display: block;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			background-image: none;
+			background-color: rgba(0,0,0,0.75);
+
+			.signpost-header{
+				padding: 3em 0 0 0;
+				color: $signpostPrimaryColor;
+				
+				header {
+					float: left;
+					width: 60%;
+					padding: 0 0 0 20%;
+
+					a {
+						color: $signpostPrimaryColor;    
+					}
+
+					a:hover{
+						color: $signpostSecondaryColor;
+					}
+
+					h2 {
+						font-size: 3em;		
+					}
+
+					article {
+						font-size: 1.13em;
+						margin: 0;
+					}
+				}
+
+				.signpost-contact {
+					float: right;
+					width: 40%;
+					padding: 0 20% 0 0;
+					text-align: right;
+
+					p {
+						margin: 0;
+						padding: 0.4em 0;
+						line-height: 1.5em;
+						font-size: 1.15em;
+					}
+				}			
+			}
+
+
+			.signpost-categories {
+				clear: both;
+				width: 100%;
+				margin: 8% 0 3% 0;
+				padding: 0 20%;
+
+				article {
+					display: inline-block;
+					width: $signpostCategoryWidth;
+					margin: 0;
+					padding: 0;
+					text-align: center;
+					vertical-align: top;
+
+					a {
+						@include transition(all 0.4s 0s ease-in);
+						display: block;
+						height: 55vh;
+						max-height: 500px;
+						margin: 0 18%;
+						padding: 0;
+						background-position: center top;
+						background-repeat: no-repeat;
+
+						span {
+							@include transition(all 0.4s 0s ease-in);
+							display: block; 
+							position: relative;
+							top: 105%;
+							margin: 0;
+							padding: 10% 0;
+							line-height: 1.5em;
+							text-shadow: 0 0 0px $signpostPrimaryColor;
+							text-transform: uppercase;
+							font-size: 1.2em;;
+							color: $signpostPrimaryColor;
+						}
+					}
+
+					a:hover {
+						@include transition(all 0.4s 0s ease-out);
+						
+						span {
+							@include transition(all 0.4s 0s ease-out);
+							text-shadow: 0 0 1px $signpostPrimaryColor;
+							font-size: 1.2em;
+							background-color: $signpostPrimaryColor;
+							color: $signpostPrimaryContrastColor;
+							opacity: 0.85;
+						}	
+					}
+
+					a#analyst {
+						background-image: url(#{$URLHostname}/img/category_analyst_bw.jpg);
+						background-position: -320px -50px;
+					}
+
+					a#analyst:hover {
+						background-image: url(#{$URLHostname}/img/category_analyst.jpg);
+					}
+
+					a#slackliner {
+						background-image: url(#{$URLHostname}/img/category_slackliner_bw.jpg);
+					}
+
+					a#slackliner:hover {
+						background-image: url(#{$URLHostname}/img/category_slackliner.jpg);
+					}
+
+					a#photographer {
+						background-image: url(#{$URLHostname}/img/category_photographer_bw2.jpg);
+					}
+
+					a#photographer:hover {
+						background-image: url(#{$URLHostname}/img/category_photographer2.jpg);
+					}
+				}
+			}
+
+			.signpost-show-more {
+				position: relative; 
+				width: 130px;
+				margin: 8em auto;
+				padding: 0;
+				text-align: center;
+				font-size: 1.3em;
+				color: $signpostPrimaryColor;
+
+				a {
+					color: $signpostPrimaryColor;
+				}
+
+				:hover {
+					color: $signpostSecondaryColor;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1280px) {
+	.signpost {
+		> .signpost-content {
+			.signpost-header{
+				header {
+					padding: 0 0 0 5%;
+				}
+
+				.signpost-contact {
+					padding: 0 5% 0 0;
+				}			
+			}
+
+
+			.signpost-categories {
+				margin: 10% 0 0 0;
+				padding: 0 5%;
+
+				article {
+					a {
+						margin: 0 12%;
+					}
+				}
+			}
+
+			.signpost-show-more {
+				margin: 5.6em auto;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.signpost {
+		> .signpost-content {
+			.signpost-header{
+				padding: 1.5em 0 0 0;
+				
+				header {
+					padding: 0 0 0 2%;
+
+					h2 {
+						font-size: 2.2em;		
+					}
+
+					article {
+						font-size: 0.85em;
+					}
+				}
+
+				.signpost-contact {
+					padding: 0 2% 0 0;
+
+					p {
+						padding: 0;
+						line-height: 1.2em;
+						font-size: 1.2em;
+					}
+				}			
+			}
+
+
+			.signpost-categories {
+				margin: 12% 0 0 0;
+				padding: 0 1%;
+
+				article {
+					a {
+						max-height: 400px;
+						margin: 0 5%;
+
+						span {
+							padding: 0;
+						}
+					}
+				}
+			}
+
+			.signpost-show-more {
+				margin: 6em auto;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.signpost {
+		> .signpost-content {
+			.signpost-header{
+				padding: 1em 0 0 0;
+				text-align: center;
+				
+				header {
+					float: none;
+					width: 100%;
+					margin: 0 auto;
+					padding: 0;
+
+
+					h2 {
+						font-size: 3em;		
+					}
+
+					article {
+						font-size: 1.13em;
+						margin: 0;
+					}
+				}
+
+				.signpost-contact {
+					float: none;
+					width: 100%;
+					margin: 2em auto;
+					padding: 0;
+					text-align: center;
+
+					p {
+						margin: 0;
+						padding: 0.6em 0;
+						line-height: 1.5em;
+						font-size: 1.4em;
+					}
+				}			
+			}
+
+
+			.signpost-categories {
+				clear: none;
+				width: 100%;
+				margin: 8% 0 3% 0;
+				padding: 0 1%;
+
+				article {
+					display: block;
+					width: 100%;
+
+					a {
+						display: block;
+						height: 10vh;
+						max-height: none;
+						margin: 5% 0;
+						padding: 0;
+
+						span {
+							position: relative;
+							top: 10%;
+							max-width: 80%;
+							margin: 0 auto;
+							padding: 3% 0;
+							background-color: $signpostPrimaryColor;
+							color: $signpostPrimaryContrastColor;
+						}
+					}
+
+					a:hover {
+						span {
+							text-shadow: 0 0 1px $signpostPrimaryContrastColor;
+							background-color: $signpostPrimaryContrastColor;
+							color: $signpostPrimaryColor;
+							opacity: 0.6;
+						}	
+					}
+
+					a#analyst {
+						background-position: -150px -237px ;
+					}
+
+					a#slackliner {
+						background-position: 0 -290px;
+					}
+
+					a#photographer {
+						background-position: -50px -10px;
+					}
+				}
+			}
+
+			.signpost-show-more {
+				margin: 8% auto;
+			}
+		}
+	}
+}
