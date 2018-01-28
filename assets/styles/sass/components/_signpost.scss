@@ -350,3 +350,103 @@
 		}
 	}
 }
+
+@media only print {
+	/* Sign post wrapper - background */
+	.signpost {
+		display: block;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background-color: #FFF;
+		background-image: none;
+
+		/* Darken background */
+		> .signpost-content {
+			display: block;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			background-image: none;
+			background-color: none;
+
+			/* Header - logon and contact */
+			.signpost-header{
+				padding: 3em 0 0 0;
+				color: $signpostPrintColor;
+				
+				header {
+					float: left;
+					width: 60%;
+					padding: 0 0 0 5%;
+
+					a {
+						color: $signpostPrintColor;    
+					}
+
+					h2 {
+						font-size: 3em;		
+					}
+
+					article {
+						font-size: 1.13em;
+						margin: 0;
+					}
+				}
+
+				.signpost-contact {
+					float: right;
+					width: 40%;
+					padding: 0 5% 0 0;
+					text-align: right;
+
+					p {
+						margin: 0;
+						padding: 0.4em 0;
+						line-height: 1.5em;
+						font-size: 1.15em;
+					}
+				}			
+			}
+
+
+			.signpost-categories {
+				clear: both;
+				width: 100%;
+				margin: 100px 0 3% 0;
+				padding: 0 5%;
+
+				article {
+					display: list;
+					width: 100%;
+					margin: 0;
+					padding: 0;
+					text-align: center;
+
+					a {
+						display: block;
+						margin: 0;
+						padding: 0;
+						background: none;
+
+						span {
+							display: block; 
+							position: relative;
+							top: 0;
+							margin: 0;
+							padding: 0;
+							line-height: 1.5em;
+							text-transform: uppercase;
+							font-size: 1.2em;;
+							color: $signpostPrintColor;
+						}
+					}
+				}
+			}
+
+			.signpost-show-more {
+				display: none;
+			}
+		}
+	}
+}
