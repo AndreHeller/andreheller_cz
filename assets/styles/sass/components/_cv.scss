@@ -1,0 +1,186 @@
+.cv {
+	padding: 3em 20%;
+
+	h1 {
+		margin: 1em 0;
+		padding: 0;
+		font-size: 3em;
+	}
+
+	/* The actual timeline (the vertical ruler) */
+	.timeline {
+		position: relative;
+		max-width: 1200px;
+		margin: 0 auto;
+
+		/* The actual timeline (the vertical ruler) */
+		&::after {
+			content: '';
+			position: absolute;
+			width: 6px;
+			background-color: $signpostPrimaryColor;
+			top: 0;
+			bottom: 0;
+			left: 50%;
+			margin-left: -3px;
+		}
+
+		/* Container around content */
+		.timeline-container {
+			padding: 0px 40px;
+			position: relative;
+			background-color: inherit;
+			width: 50%;
+
+			/* The circles on the timeline */
+			&::after {
+				content: '';
+				position: absolute;
+				width: 25px;
+				height: 25px;
+				right: -17px;
+				background-color: $timelineCircleBGColor;
+				border: 4px solid $timelineCircleColor;
+				top: 15px;
+				border-radius: 50%;
+				z-index: 1;
+				@include transition(background .2s);
+			}
+
+			&:hover::after {
+				background-color: $timelineCircleColor;
+			}
+
+			/* The actual content */
+			.timeline-content {
+				padding: 20px 30px;
+				background-color: $timelineBGColor;
+				position: relative;
+				border-radius: 6px;
+
+				h2 {
+					font-size: 2.5em;
+				}
+
+				p {
+					font-size: 1.1em;
+				}
+			}
+		}
+
+		/* Place the container to the left */
+		.timeline-left {
+			left: 0;
+
+			/* Add arrows to the left container (pointing right) */
+			&::before {
+				content: " ";
+				height: 0;
+				position: absolute;
+				top: 22px;
+				width: 0;
+				z-index: 1;
+				right: 30px;
+				border: medium solid $timelineBGColor;
+				border-width: 10px 0 10px 10px;
+				border-color: transparent transparent transparent $timelineBGColor;
+			}
+		}
+
+		/* Place the container to the right */
+		.timeline-right {
+			left: 50%;
+
+			/* Add arrows to the right container (pointing left) */
+			&::before {
+				content: " ";
+				height: 0;
+				position: absolute;
+				top: 22px;
+				width: 0;
+				z-index: 1;
+				left: 30px;
+				border: medium solid $timelineBGColor;
+				border-width: 10px 10px 10px 0;
+				border-color: transparent $timelineBGColor transparent transparent;
+			}
+
+			/* Fix the circle for containers on the right side */
+			&::after {
+				left: -16px;
+			}
+		}
+	}	
+
+	.timeline-filter {
+		width: 20%;
+		position: relative;
+		margin: 0 0 5em 0;
+		padding: 0;
+
+		label {
+			position: absolute;
+			left: 100%;
+			top: 0;
+			left: 0;
+			margin: 1.5em 0;
+			min-width: 200px;	
+			text-align: center;
+			font-size: 1.3em;
+		}
+
+		.timeline-importance-range {
+			-webkit-appearance: none;  /* Override default CSS styles */
+		    appearance: none;
+		    height: 15px;
+		    width: 100%;
+		    border-radius: 5px;
+		    background: $timelineBGColor; 
+		    outline: none; 
+		    opacity: 0.7;
+			@include transition(opacity .2s);
+
+
+		    &:hover {
+		    	opacity: 1;
+		    }
+
+		    &::before, &::after {
+		    	content: " ";
+		    	position: absolute;
+		    	top: -1.5px;
+		    	width: 22px;
+			    height: 22px;
+			    border-radius: 50%;
+			    background: $timelineBGColor;
+			    z-index: -1;
+		    }
+
+		    &::after {
+		    	/*left: 130px;*/
+		    	right: 0;
+		    }
+
+		    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+			&::-webkit-slider-thumb {
+			    -webkit-appearance: none; 
+			    appearance: none;
+			    width: 25px; 
+			    height: 25px;
+			    border-radius: 50%;
+			    background: $timelineCircleColor;
+			    cursor: pointer;
+			    z-index: 1;
+			}
+
+			&::-moz-range-thumb {
+			    width: 25px;
+			    height: 25px;
+			    border-radius: 50%;
+			    background: $timelineCircleColor; 
+			    cursor: pointer;
+			    z-index: 1;
+			}
+		}
+	}
+}
