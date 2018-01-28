@@ -1,0 +1,610 @@
+@media only screen {
+	.timeline-container {
+		padding: 3em 20%;
+
+		h1 {
+			margin: 1em 0;
+			padding: 0;
+			font-size: 3em;
+		}
+
+		hr {
+			display: none;
+		}
+
+		.timeline-filter-range {
+			position: relative;
+			float: left;
+			width: 50%;
+			margin: 0 0 5em 0;
+			padding: 0 2em 0 0;
+
+			label {
+				display: block;
+				position: relative;
+				margin: 12px 20px;
+				padding: 0 0 20px 0;
+				cursor: pointer;
+				text-align: right;
+				line-height: 1.2em;
+				font-size: 1.4em;
+				@include user-select(none);
+
+				input {
+					-webkit-appearance: none;  /* Override default CSS styles */
+				    appearance: none;
+				    height: 25px;
+				    margin: 0 0 0 35px;
+				    border-radius: 15px;
+				    background: $timelineSecondaryColor; 
+				    outline: none;
+				    cursor: pointer;
+					@include transition(opacity .2s);
+
+				    &::before {
+				    	content: "1";
+				    	position: relative;
+				    	left: -15px;
+				    	top: 5px;
+				    	color: $timelineSecondaryDarkColor;
+				    	font-size: 1.2em;
+				    }
+
+				    &::after {
+				    	content: "3";
+				    	position: relative;
+				    	right: -15px;
+				    	top: 5px;
+				    	color: $timelineSecondaryDarkColor;
+				    	font-size: 1.2em;
+				    }
+
+					&::-webkit-slider-thumb {
+					    -webkit-appearance: none; 
+					    appearance: none;
+					    width: 25px; 
+					    height: 25px;
+					    border-radius: 50%;
+					    background: $timelinePrimaryColor;
+					    cursor: pointer;
+					}
+
+					&::-moz-range-thumb {
+					    width: 25px;
+					    height: 25px;
+					    border-radius: 50%;
+					    background: $timelinePrimaryColor; 
+					    cursor: pointer;
+					}
+				}
+
+				&:hover input {
+					background-color: $timelineSecondaryDarkerColor;
+				}
+			}
+
+			ul {
+				text-align: right;
+				font-size: 1.2em;
+				line-height: 2em;
+
+				span {
+					font-size: 1.4em;
+					vertical-align: top;
+				}
+			}
+		}
+
+		.timeline-filter-checkboxes {	
+			position: relative;
+			float: right;
+			width: 50%;
+			margin: 0 0 5em 0;
+
+			label {
+				display: block;
+				position: relative;
+				padding-left: 35px;
+				margin: 12px 20px;
+				cursor: pointer;
+				line-height: 1.2em;
+				font-size: 1.4em;
+				@include user-select(none);
+
+				input {
+					position: absolute;
+					opacity: 0;
+					cursor: pointer;
+
+					&:checked ~ .checkmark {
+						background-color: $timelinePrimaryColor;
+					}
+
+					&:checked ~ .checkmark:after {
+						display: block;
+					}
+				}
+
+				.checkmark {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 25px;
+					width: 25px;
+					background-color: $timelineSecondaryColor;
+
+					&:after {
+						content: "";
+						position: absolute;
+						display: none;
+						left: 9px;
+						top: 5px;
+						width: 5px;
+						height: 10px;
+						border: solid $timelineSecondaryLighterColor;
+						border-width: 0 3px 3px 0;
+						@include transform(rotate(45deg));
+					}
+				}
+
+				&:hover input ~ .checkmark {
+					background-color: $timelineSecondaryDarkerColor;
+				}
+			}
+		}
+
+		/* The actual timeline (the vertical ruler) */
+		.timeline {
+			clear: both;
+			position: relative;
+			max-width: 1200px;
+			margin: 0 auto;
+
+			/* The actual timeline (the vertical ruler) */
+			&::after {
+				content: '';
+				position: absolute;
+				width: 6px;
+				background-color: $timelineSecondaryColor;
+				top: 0;
+				bottom: 0;
+				left: 50%;
+				margin-left: -3px;
+			}
+
+			/* Container around content */
+			.timeline-container {
+				padding: 0px 45px;
+				position: relative;
+				background-color: inherit;
+				width: 50%;
+
+				/* The circles on the timeline */
+				&::after {
+					content: attr(data-year);
+					box-sizing: border-box;
+					position: absolute;
+					top: 12px;
+					width: 50px;
+					height: 50px;
+					right: -25px;
+					padding: 12px 0;
+					border: 4px solid $timelinePrimaryColor;
+					border-radius: 50%;
+					text-align: center;
+					font-weight: bold;
+					background-color: $timelineSecondaryLighterColor;
+					color: $timelinePrimaryColor;
+					z-index: 1;
+					@include transition(background .2s);
+				}
+
+				&:hover::after {
+					background-color: $timelinePrimaryColor;
+					color: $timelineSecondaryLighterColor;
+				}
+
+				&[data-showCircle="false"]::after{
+					display: none;
+				}
+
+				/* The actual content */
+				.timeline-content {
+					padding: 20px 30px;
+					background-color: $timelineSecondaryColor;
+					position: relative;
+					border-radius: 6px;
+
+					h2 {
+						font-size: 1.7em;
+					}
+
+					p {
+						font-size: 1em;
+					}
+				}
+			}
+
+			/* Place the container to the left */
+			.timeline-left {
+				left: 0;
+
+				/* Add arrows to the left container (pointing right) */
+				&::before {
+					content: " ";
+					height: 0;
+					position: absolute;
+					top: 26px;
+					width: 0;
+					z-index: 1;
+					right: 35px;
+					border: medium solid $timelineSecondaryColor;
+					border-width: 10px 0 10px 10px;
+					border-color: transparent transparent transparent $timelineSecondaryColor;
+				}
+			}
+
+			/* Place the container to the right */
+			.timeline-right {
+				left: 50%;
+
+				/* Add arrows to the right container (pointing left) */
+				&::before {
+					content: " ";
+					height: 0;
+					position: absolute;
+					top: 26px;
+					width: 0;
+					z-index: 1;
+					left: 35px;
+					border: medium solid $timelineSecondaryColor;
+					border-width: 10px 10px 10px 0;
+					border-color: transparent $timelineSecondaryColor transparent transparent;
+				}
+
+				/* Fix the circle for containers on the right side */
+				&::after {
+					left: -25px;
+				}
+			}
+		}	
+	}	
+}
+
+@media only screen and (max-width: 1280px) {
+	.timeline-container {
+		padding: 1em 5%;
+	}	
+}
+
+@media only screen and (max-width: 768px) {
+	.timeline-container {
+		padding: 1em 2%;
+
+		h1 {
+			margin: 1em 0 0.5em 0;
+			padding: 0;
+			font-size: 3em;
+		}		
+
+		hr {
+			display: block;
+			height: 1px;
+			border: 0;
+			background-color: $timelineSecondaryDarkerColor;
+		}
+
+		.timeline-filter-range {
+			position: relative;
+			float: none;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+
+			label {
+				float:left;
+				width: 50%;
+				margin: 8px 0;
+				padding: 0 0 20px 0;
+				text-align: center;
+
+				input {
+					position: relative;
+					width: 80%;
+					top: 15px;
+				    height: 40px;
+				    margin: 0;
+				    border-radius: 25px;
+
+				    &::before {
+				    	top: 8px;
+				    	left: -20px;
+				    	font-size: 1.8em;
+				    }
+
+				    &::after {
+				    	top: 8px;
+				    	right: -20px;
+				    	font-size: 1.8em;
+				    }
+
+					&::-webkit-slider-thumb {
+					    -webkit-appearance: none; 
+					    appearance: none;
+					    width: 40px; 
+					    height: 40px;
+					    border-radius: 50%;
+					    background: $timelinePrimaryColor;
+					    cursor: pointer;
+					}
+
+					&::-moz-range-thumb {
+					    width: 40px;
+					    height: 40px;
+					    border-radius: 50%;
+					    background: $timelinePrimaryColor; 
+					    cursor: pointer;
+					}
+				}
+
+				&:hover input {
+					background-color: $timelineSecondaryDarkerColor;
+				}
+			}
+
+			ul {
+				float: right;
+				padding-right: 0.8em;
+			}
+		}
+
+		.timeline-filter-checkboxes {	
+			clear: both;
+			width: 100%;
+			margin: 2em 0 5em 0;
+			text-align: center;
+
+			label {
+				display: inline-block;
+				padding: 4px 0 0 50px;
+
+				.checkmark {
+					top: 0;
+					left: 0;
+					height: 35px;
+					width: 35px;
+
+					&:after {
+						left: 11.5px;
+						top: 3px;
+						width: 8px;
+						height: 18px;
+						border-width: 0 5px 5px 0;
+					}
+				}
+			}
+		}
+
+		/* The actual timeline (the vertical ruler) */
+		.timeline {
+			
+			/* The actual timeline (the vertical ruler) */
+			&::after {
+				left: 25px;
+			}
+
+			/* Container around content */
+			.timeline-container {
+				margin: 25px 0 0 0;
+				padding: 0 10px 0 65px;
+				width: 100%;
+
+				/* The circles on the timeline */
+				&::after {
+					left: 0px;
+					padding: 12px 0;
+				}
+
+				/* The actual content */
+				.timeline-content {
+					padding: 12px 20px;
+
+					h2 {
+						font-size: 1.7em;
+					}
+
+					p {
+						font-size: 1.2em;
+					}
+				}
+			}
+
+			/* Place the container to the left */
+			.timeline-left {
+
+				/* Add arrows to the left container (pointing right) */
+				&::before {
+					top: 26px;
+					left: 55px;
+					border-width: 10px 10px 10px 0;
+					border-color: transparent $timelineSecondaryColor transparent transparent;
+				}
+			}
+
+			/* Place the container to the right */
+			.timeline-right {
+				left: 0;
+
+				/* Add arrows to the right container (pointing left) */
+				&::before {
+					top: 26px;
+					left: 55px;
+				}
+
+				/* Fix the circle for containers on the right side */
+				&::after {
+					left: 0px;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.timeline-container {
+		padding: 1em 1%;
+
+		h1 {
+			margin: 0 0 1em 0;
+		}		
+
+		.timeline-filter-range {
+			margin: 70px 0 0 0; 
+
+			label {
+				float: none;
+				width: 100%;
+				font-size: 1.8em;
+
+				input {
+				    &::before {
+				    	content: 'Podstatné informace';
+				    	position: absolute;
+				    	top: 50px;
+				    }
+
+				    &::after {
+				    	content: 'Nudné detaily';
+				    	position: absolute;
+				    	top: 50px;
+				    }
+				}
+			}
+
+			ul {
+				float: none;
+				display: none;
+			}
+		}	
+	}
+}
+
+@media only print {
+	.timeline-container {
+		padding: 1em 5%;
+
+		h1 {
+			margin: 0;
+			padding: 0;
+			font-size: 2em;
+		}
+
+		hr {
+			display: none;
+		}
+
+		.timeline-filter-range {
+			display: none;
+		}
+
+		.timeline-filter-checkboxes {	
+			
+			display: none;
+		}
+
+		/* The actual timeline (the vertical ruler) */
+		.timeline {
+			clear: both;
+			position: relative;
+			max-width: 1200px;
+			margin: 50px auto 0;
+
+			/* The actual timeline (the vertical ruler) */
+			&::after {
+				content: '';
+				position: absolute;
+				border-left: solid 6px $timelineSecondaryColor;
+				top: 0;
+				bottom: 0;
+				left: 25px;
+			}
+
+			/* Container around content */
+			.timeline-container {
+				margin: 0 0 30px 80px;
+				padding: 0;
+				position: relative;
+				background-color: none;
+				border: 1px solid $timelineSecondaryDarkerColor;
+				border-radius: 10px;
+
+				/* The circles on the timeline */
+				&::after {
+					content: attr(data-year);
+					box-sizing: border-box;
+					position: absolute;
+					top: 12px;
+					width: 50px;
+					height: 50px;
+					left: -80px;
+					padding: 12px 0;
+					border: 4px solid $timelinePrimaryColor;
+					border-radius: 50%;
+					text-align: center;
+					font-weight: bold;
+					background-color: $timelineSecondaryLighterColor;
+					color: $timelinePrimaryColor;
+					z-index: 1;
+				}
+
+				&[data-showCircle="false"]::after{
+					display: none;
+				}
+
+				/* The actual content */
+				.timeline-content {
+					padding: 12px 20px;
+					background-color: $timelineSecondaryColor;
+					position: relative;
+					border-radius: 6px;
+
+					h2 {
+						font-size: 1.7em;
+					}
+
+					p {
+						font-size: 1.2em;
+					}
+				}
+			}
+
+			/* Place the container to the left */
+			.timeline-left, .timeline-right {
+				left: 0;
+
+				/* Add arrows to the left container (pointing right) */
+				&::before {
+					content: " ";
+					height: 0;
+					position: absolute;
+					top: 26px;
+					width: 0;
+					z-index: 1;
+					left: -12px;
+					border: medium solid $timelineSecondaryColor;
+					border-width: 10px 10px 10px 0;
+					border-color: transparent $timelineSecondaryColor transparent transparent;
+				}
+			}
+
+			/* Place the container to the right */
+			.timeline-right {
+
+				/* Fix the circle for containers on the right side */
+				&::after {
+					left: -80px;
+				}
+			}
+		}	
+	}
+}
