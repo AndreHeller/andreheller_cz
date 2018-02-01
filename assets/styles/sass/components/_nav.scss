@@ -1,0 +1,174 @@
+@media only screen {
+    #navbar {
+        background-color: $navBGcolor;
+        position: fixed; 
+        top: -80px; 
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        color: $navTextcolor;
+        box-shadow: 2px 0 3px  $navShadowcolor;
+        opacity: 0.97;
+        z-index: 1000;
+        @include transition(top 0.3s);
+
+        .navbar-logo {
+            float: left;
+            padding: 10px 40px 10px 50px;
+
+            h2 {
+                font-size: 2.5em;
+
+                a {
+                    color: $navTextcolor;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: $signpostSecondaryColor;
+                    }
+                }
+            }
+
+            p {
+                font-size: 0.38em;
+                margin: 0;
+                padding: 0;
+                line-height: 1em;
+            }
+        }
+
+        .navbar-contact {
+            float: right;
+            display: block;
+            padding: 15px 40px 10px 50px;
+            line-height: 1.5em;
+            text-align: right;
+        }
+
+        .clearfix {
+            display: none;
+        }
+
+        #navbar-links > a {
+            float: left;
+            display: block;
+            color: $navTextcolor;
+            text-align: center;
+            padding: 30px 15px;
+            text-decoration: none;
+
+            &:hover {
+                background-color: $navTextcolor;
+                color: #000;
+            }
+        }
+
+        .navbar-navbutton {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    #navbar { 
+        top: -135px; 
+        text-align: center;
+
+        .navbar-logo {
+            padding: 8px 10px 0 20px;
+
+            h2 {
+                font-size: 2em;
+            }
+        }
+
+        .navbar-contact {
+            padding: 8px 20px 0 10px;
+            line-height: 1.5em;
+        }
+
+        .clearfix {
+            display: block;
+            width: 0px;
+            height: 0px;
+        }
+
+        #navbar-links > a {
+            float: none;
+            display: inline-block;
+            padding: 20px 12px;
+        }
+
+        .navbar-navbutton {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #navbar {
+        top: -55px; 
+
+        .navbar-logo {
+            width: 100%;
+            padding: 8px 10px 10px 10px;
+            text-align: left;
+
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+
+        .navbar-contact {
+            display: none;
+        }
+
+        .clearfix {
+            display: block;
+        }
+
+        #navbar-links { 
+            position: absolute;
+            width: 100%;
+            top: -60vh;
+            background-color: $navBGcolor;
+            @include transition(top 0.4s 0s ease-out);
+
+            > a {
+                float: none;
+                display: block;
+                padding: 20px 12px;
+            }
+        }
+
+
+        .navbar-navbutton {
+            display: block;
+            position: absolute;
+            top: 6px;
+            right: 16px;
+            padding: 15px;
+            border: solid 0.5px $navTextBordercolor;
+            cursor: pointer;
+
+            @include transition(all 0.2s 0s ease-in);
+
+            &:hover {
+                background-color: $navTextcolor;
+                color: $navBGcolor;
+                
+                @include transition(all 0.2s 0 easy-out);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    /* Nothing special is here */
+}
+
+@media only print {
+    #navbar {
+        display: none;
+    }  
+}
