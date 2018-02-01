@@ -3,12 +3,11 @@ body {
 }
 
 a {
-	@include transition(color 0.2s 0s ease-in);
-
+	@include transition(color 0.2s 0s ease-in, background-color 0.2s 0s ease-in);
 }
 
 a:hover{
-	@include transition(color 0.2s 0s ease-out);
+	@include transition(color 0.2s 0s ease-out, background-color 0.2s 0s ease-out);
 }
 
 .text-center {
@@ -21,4 +20,8 @@ a:hover{
 
 .text-right {
 	text-align: right;
+}
+
+.clearfix {
+	clear: both;
 }

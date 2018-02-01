@@ -8,6 +8,23 @@
         <link rel="stylesheet" href="//localhost:8080/styles/main.css">
     </head>
     <body>
+        <header id="navbar">
+            <div class="navbar-logo">
+                <h2><a href="#">André Heller</a><h2>
+                <p>Webový analytik s vášní pro vývoj</p>
+            </div>
+            <div class="navbar-contact">mail@andreheller.cz<br>+420 721 810 051</div>
+            <div class="clearfix"></div>
+            <div id="navbar-links">
+                <a href="#">Kdo jsem</a>
+                <a href="#">Analytik &amp; lektor</a>
+                <a href="#">Slackliner &amp; lezec</a>
+                <a href="#">Fotograf &amp; kameraman</a>
+                <a href="#">Vývojář</a>
+                <a href="#">Napište mi</a>
+            </div>
+            <div class="navbar-navbutton" onclick="togglNav();"><i class="fa fa-align-justify" id="menuIcon"></i></div>
+        </header>
         <div class="signpost">
             <div class="signpost-content">
                 <section class="signpost-header">
@@ -31,7 +48,7 @@
                     </article>
                 </section>
                 <div class="signpost-show-more">
-                    <a href="">
+                    <a href="javascript:scrollDown();">
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                         Číst více
                     </a>
@@ -162,7 +179,54 @@
             </div>
         </section>
         <footer id="footer">
-            
+
         </footer>
+        <script type="text/javascript">
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction() {
+              if (document.body.scrollTop >= window.innerHeight || document.documentElement.scrollTop >= window.innerHeight) {
+                document.getElementById("navbar").style.top = "0";
+              }
+              else {
+                if (window.matchMedia("only screen and (max-width: 768px)").matches) {
+                    document.getElementById("navbar").style.top = "-55px";
+                    hideNav();
+
+                }
+                else if (window.matchMedia("only screen and (max-width: 1280px)").matches) {
+                    document.getElementById("navbar").style.top = "-135px";
+                } else {
+                    document.getElementById("navbar").style.top = "-80px";
+                }
+              }
+            }
+
+            function scrollDown() {
+                document.body.scrollTop = window.innerHeight;
+                document.documentElement.scrollTop = window.innerHeight;
+            }
+
+            function togglNav() {
+                window.nav = window.nav || false;
+
+                if(window.nav){
+                    hideNav();
+                }
+                else {
+                    showNav();
+                }
+            }
+
+            function showNav() {
+                document.getElementById('navbar-links').style.top = "55px";
+                window.nav = true;
+            }
+
+            function hideNav() {
+                document.getElementById('navbar-links').style.top = "-60vh";
+                window.nav = false;
+            }
+        </script>
     </body>
 </html>
