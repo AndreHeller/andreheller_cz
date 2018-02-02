@@ -63,6 +63,14 @@
 						line-height: 1.5em;
 						font-size: 1.15em;
 					}
+
+					a {
+						color: $signpostPrimaryColor;    
+					}
+
+					a:hover{
+						color: $signpostSecondaryColor;
+					}
 				}			
 			}
 
