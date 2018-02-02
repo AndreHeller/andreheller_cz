@@ -17,24 +17,29 @@
 			float: left;
 			width: 50%;
 			margin: 0 0 5em 0;
-			padding: 0 2em 0 0;
+			padding: 0;
 
 			label {
 				display: block;
 				position: relative;
-				margin: 12px 20px;
-				padding: 0 0 20px 0;
+				margin: 12px 70px;
+				padding: 0;
 				cursor: pointer;
-				text-align: right;
+				text-align: center;
 				line-height: 1.2em;
-				font-size: 1.4em;
+				font-size: 1.5em;
 				@include user-select(none);
 
 				input {
 					-webkit-appearance: none;  /* Override default CSS styles */
 				    appearance: none;
-				    height: 25px;
-				    margin: 0 0 0 35px;
+				    position: absolute;
+				    top: 50px;
+				    left: 5%;
+				    height: 30px;
+				    width: 90%;
+				    margin: 0;
+				    padding: 0;
 				    border-radius: 15px;
 				    background: $timelineSecondaryColor; 
 				    outline: none;
@@ -42,36 +47,36 @@
 					@include transition(opacity .2s);
 
 				    &::before {
-				    	content: "1";
-				    	position: relative;
-				    	left: -15px;
-				    	top: 5px;
+				    	content: 'Podstatné informace';
+				    	position: absolute;
+				    	top: 50px;
+				    	left: -50px;
 				    	color: $timelineSecondaryDarkColor;
-				    	font-size: 1.2em;
+				    	font-size: 1.5em;
 				    }
 
 				    &::after {
-				    	content: "3";
-				    	position: relative;
-				    	right: -15px;
-				    	top: 5px;
+				    	content: 'Nudné detaily';
+				    	position: absolute;
+				    	top: 50px;
+				    	right: -50px;
 				    	color: $timelineSecondaryDarkColor;
-				    	font-size: 1.2em;
+				    	font-size: 1.5em;
 				    }
 
 					&::-webkit-slider-thumb {
 					    -webkit-appearance: none; 
 					    appearance: none;
-					    width: 25px; 
-					    height: 25px;
+					    width: 30px; 
+					    height: 30px;
 					    border-radius: 50%;
 					    background: $timelinePrimaryColor;
 					    cursor: pointer;
 					}
 
 					&::-moz-range-thumb {
-					    width: 25px;
-					    height: 25px;
+					    width: 30px;
+					    height: 30px;
 					    border-radius: 50%;
 					    background: $timelinePrimaryColor; 
 					    cursor: pointer;
@@ -80,17 +85,6 @@
 
 				&:hover input {
 					background-color: $timelineSecondaryDarkerColor;
-				}
-			}
-
-			ul {
-				text-align: right;
-				font-size: 1.2em;
-				line-height: 2em;
-
-				span {
-					font-size: 1.4em;
-					vertical-align: top;
 				}
 			}
 		}
@@ -105,7 +99,7 @@
 				display: block;
 				position: relative;
 				padding-left: 35px;
-				margin: 12px 20px;
+				margin: 12px 10px 5px 30%;
 				cursor: pointer;
 				line-height: 1.2em;
 				font-size: 1.4em;
@@ -274,6 +268,10 @@
 @media only screen and (max-width: 1280px) {
 	.timeline-container {
 		padding: 1em 5%;
+
+		h1 {
+			margin: 2.5em 0 0.5em 0;
+		}
 	}	
 }
 
@@ -282,7 +280,7 @@
 		padding: 1em 2%;
 
 		h1 {
-			margin: 1em 0 0.5em 0;
+			margin: 1.1em 0 0.5em 0;
 			padding: 0;
 			font-size: 3em;
 		}		
@@ -302,88 +300,66 @@
 			padding: 0;
 
 			label {
-				float:left;
-				width: 50%;
-				margin: 8px 0;
-				padding: 0 0 20px 0;
+				margin: 8px 0 135px;
+				padding: 0;
 				text-align: center;
 
 				input {
-					position: relative;
+					left: 10%;
 					width: 80%;
-					top: 15px;
-				    height: 40px;
-				    margin: 0;
-				    border-radius: 25px;
-
+					height: 45px;
+					border-radius: 22.5px;
+				    			    
 				    &::before {
-				    	top: 8px;
-				    	left: -20px;
-				    	font-size: 1.8em;
+				    	left: -30px;
 				    }
 
 				    &::after {
-				    	top: 8px;
-				    	right: -20px;
-				    	font-size: 1.8em;
+				    	right: -30px;
 				    }
 
-					&::-webkit-slider-thumb {
-					    -webkit-appearance: none; 
-					    appearance: none;
-					    width: 40px; 
-					    height: 40px;
-					    border-radius: 50%;
-					    background: $timelinePrimaryColor;
-					    cursor: pointer;
+				    &::-webkit-slider-thumb {
+					    width: 45px; 
+					    height: 45px;
 					}
 
 					&::-moz-range-thumb {
-					    width: 40px;
-					    height: 40px;
-					    border-radius: 50%;
-					    background: $timelinePrimaryColor; 
-					    cursor: pointer;
+					    width: 45px;
+					    height: 45px;
 					}
 				}
-
-				&:hover input {
-					background-color: $timelineSecondaryDarkerColor;
-				}
-			}
-
-			ul {
-				float: right;
-				padding-right: 0.8em;
 			}
 		}
 
 		.timeline-filter-checkboxes {	
+			position: inherit;
+			float: none;
 			clear: both;
 			width: 100%;
-			margin: 2em 0 5em 0;
+			margin: 0 0 5em 0;
+			padding: 0;
 			text-align: center;
 
 			label {
 				display: inline-block;
-				padding: 4px 0 0 50px;
+				margin: 12px 5px 5px 5px;
+				padding-left: 45px;
 
 				.checkmark {
-					top: 0;
-					left: 0;
 					height: 35px;
 					width: 35px;
 
 					&:after {
-						left: 11.5px;
-						top: 3px;
-						width: 8px;
+						left: 13px;
+						top: 5px;
+						width: 6px;
 						height: 18px;
-						border-width: 0 5px 5px 0;
+						border-width: 0 4px 4px 0;
 					}
 				}
 			}
 		}
+
 
 		/* The actual timeline (the vertical ruler) */
 		.timeline {
@@ -455,37 +431,8 @@
 		padding: 1em 1%;
 
 		h1 {
-			margin: 0 0 1em 0;
+			margin: 1.1em 0 0.5em 0;
 		}		
-
-		.timeline-filter-range {
-			margin: 70px 0 0 0; 
-
-			label {
-				float: none;
-				width: 100%;
-				font-size: 1.8em;
-
-				input {
-				    &::before {
-				    	content: 'Podstatné informace';
-				    	position: absolute;
-				    	top: 50px;
-				    }
-
-				    &::after {
-				    	content: 'Nudné detaily';
-				    	position: absolute;
-				    	top: 50px;
-				    }
-				}
-			}
-
-			ul {
-				float: none;
-				display: none;
-			}
-		}	
 	}
 }
 
