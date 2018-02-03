@@ -39,29 +39,37 @@ module design {
 		 * It considers dimesion media queries.
 		 */
 		public turnOnNavigation(): void {
-			//Show navigation
+			//Show navigation and top button
             if (document.body.scrollTop >= this.scrollHeight || 
-            	document.documentElement.scrollTop >= this.scrollHeight) 
-            {
-                document.getElementById("navbar").style.top = "0"; 
-            }
-            //Hide navigation
-            else {
-                if (window.matchMedia("only screen and (max-width: 768px)").matches)
-                {
-                    document.getElementById("navbar").style.top = "-55px";
+            	document.documentElement.scrollTop >= this.scrollHeight) {
+                document.getElementById("navbar").style.top = "0";
 
+            	if (window.matchMedia("only screen and (max-width: 768px)").matches){
+            		document.getElementById("top-button").style.right = "10px"; 
+            	}
+            	else if (window.matchMedia("only screen and (max-width: 1280px)").matches) {
+                    document.getElementById("top-button").style.right = "20px"; 
+                }
+                else {
+                	document.getElementById("top-button").style.right = "70px"; 
+                }
+                
+            }
+            //Hide navigation and top button
+            else {
+                if (window.matchMedia("only screen and (max-width: 768px)").matches){
+                    document.getElementById("navbar").style.top = "-55px";
                     //small screen has to hide also responsive links
                     this.toggleNavigationLinks(false);
                 }
-                else if (window.matchMedia("only screen and (max-width: 1280px)").matches) 
-                {
+                else if (window.matchMedia("only screen and (max-width: 1280px)").matches) {
                     document.getElementById("navbar").style.top = "-135px";
                 }
-                else 
-                {
+                else {
                     document.getElementById("navbar").style.top = "-80px";
                 }
+
+                document.getElementById("top-button").style.right = "-50px";
             }
 		}
 

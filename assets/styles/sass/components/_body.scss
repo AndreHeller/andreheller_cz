@@ -1,5 +1,9 @@
 body {
 	font-family: 'Ubuntu';
+
+	&.in-transition {
+		@include transition(transform 900ms ease);
+	}
 }
 
 a {

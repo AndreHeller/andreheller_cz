@@ -1,0 +1,53 @@
+@media only screen {
+    #top-button {
+        position: fixed;
+        bottom: 50px;
+        right: -50px;
+        width: 50px;
+        height: 50px;
+        margin: 0;
+        padding: 10px 7px 12px 12px;        
+        border: solid 1px #DDD;
+        border-radius: 8px;
+        font-size: 1.5em;       
+        text-decoration: none;
+        color: #AAA;
+        @include transition(right 0.3s, top 0.3s); 
+
+        &:hover {
+            background-color: #AAA;
+            border-color: #AAA;
+            color: #DDD;
+        }
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    #top-button {
+        bottom: 50px;
+    }   
+}
+
+@media only screen and (max-width: 768px) {
+    #top-button {
+        position: fixed;
+        bottom: 20px;
+        background-color: #333;
+
+        &:hover {
+            background-color: #AAA;
+            border-color: #AAA;
+            color: #DDD;
+        }    
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    /* Nothing special is here */
+}
+
+@media only print {
+    #top-button {
+        display: none;
+    }
+}

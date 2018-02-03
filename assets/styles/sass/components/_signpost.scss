@@ -1,6 +1,6 @@
 @media only screen {
 	/* Sign post wrapper - background */
-	.signpost {
+	#signpost {
 		display: block;
 		width: 100%;
 		height: 100vh;
@@ -176,7 +176,7 @@
 }
 
 @media only screen and (max-width: 1280px) {
-	.signpost {
+	#signpost {
 		> .signpost-content {
 			.signpost-header{
 				header {
@@ -208,7 +208,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-	.signpost {
+	#signpost {
 		> .signpost-content {
 			.signpost-header{
 				padding: 1.5em 0 0 0;
@@ -261,7 +261,7 @@
 }
 
 @media only screen and (max-width: 480px) {
-	.signpost {
+	#signpost {
 		> .signpost-content {
 			.signpost-header{
 				padding: 1em 0 0 0;
@@ -361,7 +361,7 @@
 
 @media only print {
 	/* Sign post wrapper - background */
-	.signpost {
+	#signpost {
 		display: block;
 		width: 100%;
 		margin: 0;
