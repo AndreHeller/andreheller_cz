@@ -18,6 +18,8 @@
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^2.3.1",
     "gulp-sass": "^3.1.0",
-    "gulp-wait": "0.0.2"
+    "gulp-typescript": "^3.2.4",
+    "gulp-wait": "0.0.2",
+    "typescript": "^2.7.1"
   }
 }

@@ -2,11 +2,16 @@
 var gulp = require('gulp'),
     connect = require('gulp-connect'), //Server for livereload;
     concat = require('gulp-concat'), //Creating output file
+    typescript = require('gulp-typescript'), //TypeScript - scripts
     sass = require('gulp-sass'), //SASS - styles
     wait = require('gulp-wait'); //Insert dealy between pipes
 
 // ============================= VARIABLES ====================================
-var paths = ""['src/**/*.ts'],
+var paths = ['typings/**/*.d.ts', 'src/**/*.ts'],
+    //Target style file name
+    targetScriptFileName = 'app.js',
+    //Target style location
+    targetScriptLocationPath = 'dist/scripts',
     //Paths to template files
     stylesPaths = ['styles/**/*.scss']
     //Target style file name
@@ -14,12 +19,16 @@ var paths = ""['src/**/*.ts'],
     //Target style location
     targetStyleLocationPath = 'dist/styles';
 
+var tsProject = typescript.createProject({
+        declarationFiles: false
+    });
+
 // ============================== TASKS =======================================
 gulp.task('default', defaultTask);
 gulp.task('dev', ['server', 'watch'], devTask);
 gulp.task('server', serverTask);
 gulp.task('watch', watchTask);
-gulp.task('build', buildTask);
+gulp.task('ts', tsTask);
 gulp.task('sass', sassTask);
 
 // ============================= FUNCTIONS ====================================
@@ -42,17 +51,24 @@ function serverTask() {
 }
 
 function watchTask() {
-    gulp.watch(paths, ['build']);
+    gulp.watch(paths, ['ts']);
     gulp.watch(stylesPaths, ['sass']);
 
     console.log('\nTask watch has been run.\n');
 }
 
-function buildTask() {
+function tsTask() {
     connect.reload();
-    console.log('\nTask build has been run.\n');
+    console.log('\nTask ts has been run.\n');
 }
 
+function tsTask() {
+    return gulp.src(paths)
+            .pipe(tsProject())
+            .pipe(concat(targetScriptFileName))
+            .pipe(gulp.dest(targetScriptLocationPath))
+            .pipe(connect.reload());
+}
 
 function sassTask() {
     return gulp.src(stylesPaths)
